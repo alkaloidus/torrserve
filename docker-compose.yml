@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  home-assistant:
+    image: ksey/torrserver:latest
+    container_name: torrserver
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=$tzone
+    volumes:
+      - ${app_data}/torrserver/db:/TS/db
+    restart: unless-stopped
+    network_mode: "host" #8090
