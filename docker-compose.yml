@@ -7,7 +7,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=$tzone
-      - TS_PORT=5665
+#      - TS_PORT=5665
       - TS_DONTKILL=1
       - TS_HTTPAUTH=0
       - TS_CONF_PATH=/opt/ts/config
@@ -17,5 +17,5 @@ services:
       - ${app_data}/torrserver/CONFIG:/opt/ts/config
     restart: unless-stopped
     network_mode: "host" #8090
-    ports:
-      - '5665:5665'
+#    ports:
+#      - '5665:5665'
