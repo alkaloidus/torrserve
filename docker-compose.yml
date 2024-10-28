@@ -1,13 +1,21 @@
 version: "3.9"
 services:
-  torrserver:
-    image: ksey/torrserver:latest
+  home-assistant:
+    image: ghcr.io/yourok/torrserver:latest
     container_name: torrserver
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=$tzone
+#      - TS_PORT=5665
+      - TS_DONTKILL=1
+      - TS_HTTPAUTH=0
+      - TS_CONF_PATH=/opt/ts/config
+      - TS_TORR_DIR=/opt/ts/torrents
     volumes:
-      - ${app_data}/torrserver/db:/TS/db
+      - ${app_data}/torrserver/CACHE:/opt/ts/torrents
+      - ${app_data}/torrserver/CONFIG:/opt/ts/config
     restart: unless-stopped
     network_mode: "host" #8090
+#    ports:
+#      - '5665:5665'
